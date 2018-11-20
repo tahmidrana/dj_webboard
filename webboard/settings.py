@@ -54,6 +54,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'webboard.urls'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
 
 TEMPLATES = [
     {

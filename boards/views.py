@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from boards.models import Board, Topic, Post
 from django.contrib.auth.models import User
 from boards.forms import NewTopicForm
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -18,6 +19,7 @@ def board_topics(request, id):
     return render(request, 'topics.html', {'board': board})
 
 
+@login_required
 def new_topic(request, id):
     board = get_object_or_404(Board, pk=id)
     user = User.objects.first()
@@ -38,3 +40,9 @@ def new_topic(request, id):
     else:
         form = NewTopicForm()
     return render(request, 'new_topic.html', {'board': board, 'form': form})
+
+
+def topic_posts(request, pk, topic_pk):
+    topic = Topic.objects.get(board__pk=pk, pk=topic_pk)
+    #topic = get_object_or_404(Topic, board__pk=pk, pk=topic_pk)
+    return render(request, 'topic_posts.html', {'topic': topic})

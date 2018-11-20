@@ -24,6 +24,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('boards/<int:id>/', views.board_topics, name='board_topics'),
     path('boards/<int:id>/new/', views.new_topic, name='new_topic'),
+    path('boards/<int:pk>/topics/<int:topic_pk>',
+         views.topic_posts, name='topic_posts'),
     path('signup/', accounts_views.signup, name='signup'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
