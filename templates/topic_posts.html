@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}{{ topic.subject }}{% endblock %}
-
+{# topic post page #}
 {% block breadcrumb %}
 <li class="breadcrumb-item"><a href="{% url 'home' %}">Boards</a></li>
 <li class="breadcrumb-item"><a href="{% url 'board_topics' topic.board.pk %}">{{ topic.board.name }}</a></li>
